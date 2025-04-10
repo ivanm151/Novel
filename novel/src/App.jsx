@@ -1,13 +1,17 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import Game from "./components/Game";
+import Articles from "./components/Articles";
 
-function App() {
+export default function App() {
     return (
-        <div>
-            <h1>Привет, Рома!</h1>
-            <Home />
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/game" element={<Game />} />
+                <Route path="/articles" element={<Articles />} />
+            </Routes>
+        </Router>
     );
 }
-
-export default App;

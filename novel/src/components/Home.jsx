@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Home() {
+export default function Home() {
     return (
         <div>
-            <h2>Добро пожаловать в визуальную новеллу!</h2>
-            <p>Это стартовая страница. Здесь будет выбор главы или статьи.</p>
+            <h2>Добро пожаловать!</h2>
+            <p>Выберите, куда пойти:</p>
+            <ul>
+                <li><Link to="/game">Играть</Link></li>
+                <li><Link to="/articles">Статьи</Link></li>
+            </ul>
         </div>
     );
 }
-
-export default Home;
