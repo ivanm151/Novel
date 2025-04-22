@@ -1,0 +1,65 @@
+start:
+#  - play morningBGM:
+  - show room_night: WITH FADE CONTINUE
+  - show Ksenia: normal AT CENTER WITH FADE
+  - Ksenia says normal: Это место... когда-то здесь был онкологический центр.
+  - Player says normal: Пахнет пылью и чем-то... странным.
+  - wait: 300
+  - Ksenia says normal: Говорят, здесь до сих пор бродит призрак — молодой человек, которого прозвали Ванечкой.
+  - Ksenia says normal: Что будем делать?
+  - choice:
+    - "Давай осмотрим здание":
+      - Ksenia says normal: Ты хочешь осмотреть здание? Ну хорошо, пойдем.
+      - scene: explorePath
+    - "Давай уйдём отсюда поскорее":
+      - Ksenia says: Хорошо, давай убиратся отсюда поскорее!
+      - scene: endGame
+  - Ksenia says normal: Надеюсь, наша игра тебе очень понравится!
+  - Ksenia says happy: Поиграй же в неё скорее!
+
+explorePath:
+  - show room_night_light: WITH FADE CONTINUE
+  - Ksenia says normal: ...
+  - wait: 300
+  - Ksenia says normal: Смотри, что это?
+  - Player says: Похоже на чей-то дневник.
+  - Ksenia says normal: Давай прочитаем?
+  - choice:
+      - "Прочитать дневник":
+          - Player says normal: Похоже это дневник того самого Ванечки.
+          - Ksenia says normal: Что, серьёзно?!
+          - Player says normal: Кажется, он ищет кого-то...
+          - Player says normal: Девочку с фотографии.
+          - Ksenia says normal: Может, попробовать ему помочь?
+          - choice:
+              - "Помочь":
+                  - scene: goodEnding
+              - "Игнорировать":
+                  - scene: badEnding
+goodEnding:
+  - show room_night: WITH CUT CONTINUE
+  - Ksenia says angry: Что?! Почему погас свет?! Не шути так!
+  - Player says: Я вообще ничего не трогал!
+  - Spirit says: Это я.
+  - Spirit says: Спасибо... Теперь я могу уйти.
+  - show room: CONTINUE
+  - Ksenia says happy: Кажется, здесь стало светлее.
+  - Player: Уходим отсюда поскорее.
+  - scene: endGame
+
+badEnding:
+  - show room_night: WITH CUT CONTINUE
+  - Ksenia says angry: Мне кажется, стоило помочь...
+  - Ksenia says angry: Иногда бездействие - худшее, что можно сдел-
+  - Player says: Тихо!
+  - Player says: Ты слышишь?
+  - Player says: Кажется, за нами кто-то идёт...
+  - scene: endGame
+
+endGame:
+  - hide ALL:
+  - effect ROLLINGCREDITS:
+    endGame: true
+    text:
+      - Демо игры от команды
+      - Сибирские Сумерки
