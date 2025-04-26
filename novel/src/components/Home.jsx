@@ -45,7 +45,7 @@ export default function Home() {
 const styles = {
     outerContainer: {
         minHeight: "100vh",
-        background: "linear-gradient(to right top, #3b1f47, #5a3b7d, #8673b0)",
+        backgroundColor: "#eee",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -53,19 +53,23 @@ const styles = {
         fontFamily: "'Georgia', serif",
     },
     innerContainer: {
-        width: "100%",
+        width: "90%",
         maxWidth: "600px",
+        background: "linear-gradient(to right top, #3b1f47, #5a3b7d, #8673b0)",
+        borderRadius: "16px",
+        padding: "40px 20px",
         textAlign: "center",
-        padding: "20px",
+        boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
     },
     title: {
-        fontSize: "48px",
+        fontSize: "clamp(28px, 6vw, 48px)", // <-- Адаптивный шрифт!
         color: "#f3e9ff",
         marginBottom: "20px",
         textShadow: "2px 2px 12px rgba(0, 0, 0, 0.4)",
+        wordBreak: "break-word", // чтобы если что переносилось
     },
     subtitle: {
-        fontSize: "24px",
+        fontSize: "clamp(18px, 4vw, 24px)", // тоже адаптивный
         color: "#d4c0f1",
         marginBottom: "40px",
     },
@@ -81,7 +85,7 @@ const styles = {
         padding: "15px 30px",
         borderRadius: "12px",
         textDecoration: "none",
-        fontSize: "20px",
+        fontSize: "18px",
         fontWeight: "bold",
         boxShadow: "0 6px 12px rgba(0,0,0,0.3)",
         transition: "background 0.3s",
