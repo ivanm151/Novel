@@ -1,38 +1,51 @@
-
 backgrounds:
-  room: assets/backgrounds/room_day.jpg
-  room_night: assets/backgrounds/room_night.jpg
-  room_night_light: assets/backgrounds/room_night_light.jpg
+  house_day: assets\bgs\room_day.jpg
+  house_night: assets\bgs\room_night_light.jpg
+  ball: assets\bgs\interior_entrance_nightl.png
+  institute_corridor: assets\bgs\corridor_2nd_floor.png
+  first_floor: assets\bgs\1st_floor.png
 
 characters:
-  Ksenia:
-    displayName: Саша
-    speechColour: "#ca90cf"
-    looks:
-      normal: assets/characters/Char3NormalSchool.png
-      happy: assets/characters/Char3HappySchool.png
-      angry: assets/characters/Char3AngrySchool.png
-  Player:
-    displayName: Вы
-    speechColour: "#ca90cf"
-  Spirit:
+  Vanechka:
     displayName: Ванечка
-    speechColour: "#ca90cf"
+    speechColour: "#87CEEB"
+    looks:
+      normal: assets\vanechka\5_normal.png
+      disagree: assets\vanechka\5_disagree2.png
+      sad: assets\vanechka\5_sad.png
 
-cgs:
-  phone1: assets/objects/phone1.png
-  phone2: assets/objects/phone2.png
+  Vladimir:
+    displayName: Владимир
+    speechColour: "FFFFFF"
+    looks:
+      normal: assets\vladimir\haruo2_school_normal.png
+      smirk: assets\vladimir\haruo2_school_smirk.png
+      straight: assets\vladimir\haruo2_school_straight.png
+      talk: assets\vladimir\haruo_school_normaltalk.png
 
-music:
-  rollingCredits: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
-  morningBGM: assets/audio/Evan_Schaeffer_-_03_-_Glow.mp3
-sfx:
-  ringtoneSFX: assets/audio/nokia6210-24-elise.mp3
-  ringtoneSFX2: assets/audio/alcatel-top_secret.mp3
+  IvanIvanovich:
+    displayName: Иван Иванович
+    speechColour: "#FFD700"
+    looks:
+      normal: assets/ivan_ivanovich/OLD_MAN_GREEN_NORMAL.png
+      angry: assets/ivan_ivanovich/OLD_MAN_GREEN_ANGRY.png
+      sad: assets/ivan_ivanovich/OLD_MAN_GREEN_SAD.png
+      worried: assets/ivan_ivanovich/OLD_MAN_GREEN_WORRIED.png
+      surprised: assets/ivan_ivanovich/OLD_MAN_GREEN_SURPRISED.png
 
-extra:
-  spritesheets:
-    rain: assets/ambient/rain.png 17 17
-    sakura: assets/ambient/sakura-petals.png 17 26
-    snowflakes: assets/ambient/snowflakes.png 17 17
-    snowflakes_large: assets/ambient/snowflakes_large.png 64 64
+  Anna:
+    displayName: Анна
+    speechColour: "#FFB6C1"
+    looks:
+      normal: assets\anna\sf2g_sensei_normal3.png
+      shy: assets\anna\sf2g_sensei_normalblush3.png
+
+  Lyuda:
+    displayName: Люда
+    speechColour: "#98FB98"
+    looks:
+      normal: assets\lyuda\Char3NormalSchool.png
+      angry: assets\lyuda\Char3AngrySchool.png
+
+  narrator:
+    speechColour: "#FFFFFF"

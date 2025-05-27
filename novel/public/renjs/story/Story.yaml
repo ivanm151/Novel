@@ -1,59 +1,189 @@
 start:
-#  - play morningBGM:
-  - show room_night: WITH FADE CONTINUE
-  - show Ksenia: normal AT CENTER WITH FADE
-  - Ksenia says normal: Это место... когда-то здесь был онкологический центр.
-  - Player says normal: Пахнет пылью и чем-то... странным.
-  - wait: 300
-  - Ksenia says normal: Говорят, здесь до сих пор бродит призрак — молодой человек, которого прозвали Ванечкой.
-  - Ksenia says normal: Что будем делать?
+  - show house_day: WITH FADE
+  - show IvanIvanovich: normal AT LEFT WITH FADE
+  - show Vanechka: normal AT RIGHT WITH FADE
+  - IvanIvanovich says normal: "Если мы опоздаем на ужин к Курочкину, то сорвется одна из важнейших сделок в моей жизни!"
+  - Vanechka says sad: "Я оставил свой платок на кухне."
   - choice:
-    - "Давай осмотрим здание":
-      - Ksenia says normal: Ты хочешь осмотреть здание? Ну хорошо, пойдем.
-      - scene: explorePath
-    - "Давай уйдём отсюда поскорее":
-      - Ksenia says: Хорошо, давай убиратся отсюда поскорее!
-      - scene: endGame
-  - Ksenia says normal: Надеюсь, наша игра тебе очень понравится!
-  - Ksenia says happy: Поиграй же в неё скорее!
+      - "Вернуться за платком":
+          - scene: returnForHandkerchief
+      - "Не возвращаться":
+          - scene: doNotReturn
 
-explorePath:
-  - show room_night_light: WITH FADE CONTINUE
-  - Ksenia says normal: ...
-  - wait: 300
-  - Ksenia says normal: Смотри, что это?
-  - Player says: Похоже на чей-то дневник.
-  - Ksenia says normal: Давай прочитаем?
+returnForHandkerchief:
+  - show house_day: WITH FADE CONTINUE
+  - hide IvanIvanovich: WITH CUT
+  - narrator says: "Ванечка вернулся в дом за платком."
+  - show Anna: normal AT CENTER WITH FADE
+  - narrator says: "У входа он наткнулся на девушку, которая наблюдала за сборами через окно."
+  - Vanechka says normal: "Ой!"
+  - Anna says shy: "Простите!"
+  - narrator says: "Они столкнулись, и Ванечка сразу влюбился в ее глубокие голубые глаза."
+  - hide Anna: WITH FADE
+  - IvanIvanovich says: "Чего стоишь, Ванечка? Опаздываем уже!"
+  - narrator says: "Ванечка схватил платок и они уехали."
+  - hide ALL:
+  - scene: ballWithAnnaMemory
+
+doNotReturn:
+  - IvanIvanovich says: "Без него теперь, Ванечка."
+  - narrator says: "Карета тронулась и унесла Смирновых на бал."
+  - scene: ballWithoutAnna
+
+ballWithAnnaMemory:
+  - show ball: WITH FADE CONTINUE
+  - show Vanechka: normal AT RIGHT WITH FADE CONTINUE
+  - show IvanIvanovich: normal AT LEFT WITH FADE CONTINUE
+  - IvanIvanovich says: "Позвольте представить, Мария Михайловна Курочкина, дочь моего уважаемого партнера."
+  - narrator says: "Весь вечер Ваня провел с Марией, но всюду ему мерещилась та незнакомка, которая была в их доме."
+  - Vanechka says: "Кто она? Почему я не могу перестать думать о ней?"
+  - hide IvanIvanovich: WITH FADE
+  - scene: afterBallKnown
+
+ballWithoutAnna:
+  - show ball: WITH FADE
+  - IvanIvanovich says: "Позвольте представить, Мария Михайловна Курочкина, дочь моего уважаемого партнера."
+  - narrator says: "Весь вечер Ваня провел с Марией, они станцевали несколько танцев и вели увлекательные разговоры."
+  - scene: afterBallUnknown
+
+afterBallKnown:
+  - show house_night: WITH FADE
+  - narrator says: "По возвращении домой Ваня нечаянно порвал свое покрывало."
+  - show IvanIvanovich: normal AT LEFT WITH FADE
+  - IvanIvanovich says angry: "Неразумный! Завтра отдай на починку белошвейке."
+  - hide IvanIvanovich: WITH FADE
+  - show house_day: WITH FADE
+  - narrator says: "На следующий день пришла дочь белошвейки."
+  - show Anna: shy AT CENTER WITH FADE
+  - Vanechka says: "Это вы... та девушка."
+  - narrator says: "Анна покраснела и молча забрала простынь."
+  - hide Anna: WITH FADE
+  - Vanechka says sad: "Сердце стучит. Наверное, это судьба."
+  - scene: nextDayKnown
+
+afterBallUnknown:
+  - show house_night: WITH FADE
+  - narrator says: "По возвращении домой Ваня нечаянно порвал свое покрывало."
+  - IvanIvanovich says: "Неразумный! Завтра отдай на починку белошвейке."
+  - hide IvanIvanovich: WITH FADE
+  - show house_day: WITH FADE
+  - narrator says: "На следующий день пришла дочь белошвейки."
+  - show Anna: shy AT CENTER WITH FADE
+  - narrator says: "Ваня был поражен ее красотой."
+  - Vanechka says: "Д-доброе утро."
+  - Anna says shy: "Доброе утро!"
+  - narrator says: "Она забрала простынь и ушла."
+  - Vanechka thinks: "Какие красивые глаза... Я даже не представился."
+  - scene: nextDayUnknown
+
+nextDayKnown:
+  - show house_day: WITH FADE
+  - show Anna: normal AT CENTER WITH FADE
+  - narrator says: "На следующее утро Анна пришла снова."
+  - narrator says: "Она принесла простынь и пирог."
+  - Vanechka says: "Позвольте спросить, как Вас зовут?"
+  - Anna says shy: "Анна. А зовут Вас?"
+  - Vanechka says normal: "Иван."
+  - narrator says: "С тех пор они встречались в саду."
+  - hide Anna: WITH FADE CONTINUE
+  - hide Vanechka: WITH FADE CONTINUE
+  - scene: relationshipDevelopment
+
+nextDayUnknown:
+  - show house_day: WITH FADE
+  - show Anna: normal AT CENTER WITH FADE
+  - narrator says: "Через сутки Анна пришла с бельем и газетами."
+  - Anna says normal: "Почтальон проезжал, решила вам свежие новости принести."
+  - Vanechka says: "С-спасибо, очень приятно."
+  - narrator says: "В следующую встречу Ваня подарил ей цветы."
+  - Vanechka says: "Мне эти цветы напоминают ваши глаза и улыбку."
+  - narrator says: "Они начали встречаться регулярно."
+  - scene: relationshipDevelopment
+
+relationshipDevelopment:
+  - narrator says: "Ваня и Анна встречались в саду, разговаривали, смеялись и мечтали о будущем."
+  - hide ALL:
+  - scene: conflict
+
+conflict:
+  - show house_night: WITH FADE
+  - show IvanIvanovich: angry AT LEFT WITH FADE
+  - show Vanechka: sad AT RIGHT WITH FADE
+  - IvanIvanovich says: "Она тебе не пара. Я нашел девушку, которая достойна тебя — Мария."
+  - Vanechka says sad: "Но отец..."
+  - IvanIvanovich says angry: "Если ослушаешься — лишу наследства."
+  - hide IvanIvanovich: WITH FADE
+  - narrator says: "Ваня сильно мучился всю ночь."
+  - narrator says: "Настолько сильно, что Ванечка решил оборвать свою жизнь."
+  - scene: tragicEnd
+
+tragicEnd:
+  - hide ALL:
+  - narrator says: "На следующее утро тело Ванечки было найдено в угловой комнате."
+  - show IvanIvanovich: worried AT LEFT WITH FADE
+  - IvanIvanovich says worried: "Боже мой! Лекаря, лекаря срочно!"
+  - hide ALL:
+  - scene: hospital
+
+hospital:
+  - show institute_corridor: WITH FADE
+  - show Lyuda: angry AT CENTER WITH FADE
+  - narrator says: "Санитарка Людмила моет пол и слышит шаги."
+  - Lyuda says: "Спать пора. Поздно уже."
+  - narrator says: "Снова шаги, но никого нет."
+  - narrator says: "Она видит силуэт у окна, но он исчезает."
+  - Lyuda says angry: "Это что такое?! Комендантский час в больнице никто не отменял!"
+  - narrator says: "Холодное прикосновение на плече, она оборачивается — никого."
+  - narrator says: "Дверь резко открывается."
   - choice:
-      - "Прочитать дневник":
-          - Player says normal: Похоже это дневник того самого Ванечки.
-          - Ksenia says normal: Что, серьёзно?!
-          - Player says normal: Кажется, он ищет кого-то...
-          - Player says normal: Девочку с фотографии.
-          - Ksenia says normal: Может, попробовать ему помочь?
-          - choice:
-              - "Помочь":
-                  - scene: goodEnding
-              - "Игнорировать":
-                  - scene: badEnding
-goodEnding:
-  - show room_night: WITH CUT CONTINUE
-  - Ksenia says angry: Что?! Почему погас свет?! Не шути так!
-  - Player says: Я вообще ничего не трогал!
-  - Spirit says: Это я.
-  - Spirit says: Спасибо... Теперь я могу уйти.
-  - show room: CONTINUE
-  - Ksenia says happy: Кажется, здесь стало светлее.
-  - Player: Уходим отсюда поскорее.
+      - "Обратить внимание":
+          - scene: payAttention
+      - "Не обращать внимания":
+          - scene: ignore
+
+payAttention:
+  - Lyuda says: "Мама дорогая! Не надо баловаться, я сейчас охрану позову!"
+  - narrator says: "Она направляется на первый этаж."
+  - scene: firstFloor
+
+ignore:
+  - narrator says: "Людмила что-то бормочет, закрывает дверь."
+  - narrator says: "Ведро с водой опрокидывается."
+  - Lyuda says angry: "Да что ж это такое!"
+  - Lyuda says angry: " Я уйду сегодня из этого проклятого здания?"
+  - narrator says: "Все двери и окна захлопываются, свет гаснет."
+  - narrator says: "Комнату окутала таинственная тишина и темнота."
+  - narrator says: "Холод пробежал по спине Людмилы..."
+  - hide Lyuda: WITH CUT CONTINUE
+  - show first_floor: WITH CUT CONTINUE
+  - show Vladimir: normal AT RIGHT WITH CUT CONTINUE
+  - narrator says: "На первом этаже сидел охранник Владимир Петрович и разгадывал сканворды."
+  - narrator says: "Как вдруг услышал еле заметный уху крик."
+  - Vladimir says: "Хм?"
+  - Vladimir says: "Показалось, наверное..."
+  - scene: deathEnding
+
+firstFloor:
+  - show first_floor: WITH FADE
+  - narrator says: "На первом этаже Людмила обнаружила изумленного охранника Владимира Петровича."
+  - show Vladimir: normal AT RIGHT WITH FADE
+  - Vladimir says: "Представляешь, Люда, нашелся отчет, который я вчера должен был сдать, а он как сквозь землю провалился."
+  - Vladimir says: "Я все обшарил, а тут видишь, прям перед носом лежит, что за чудо."
+  - Lyuda says angry: "Да ладно, Петрович, надо тебе сказки придумывать."
+  - Vladimir says: "..."
+  - Lyuda says angry: "Поди лучше разберись что на втором этаже творится. Либо петли подкрути, чтоб двери не открывались."
+  - Lyuda says angry: "Сил моих больше нет!"
+  - scene: exitEnding
+
+deathEnding:
+  - hide ALL:
+  - narrator says: "На следующее утро в угловой комнате на втором этаже было найдено тело санитарки Людмилы."
+  - narrator says: "Причина смерти не установлена."
   - scene: endGame
 
-badEnding:
-  - show room_night: WITH CUT CONTINUE
-  - Ksenia says angry: Мне кажется, стоило помочь...
-  - Ksenia says angry: Иногда бездействие - худшее, что можно сдел-
-  - Player says: Тихо!
-  - Player says: Ты слышишь?
-  - Player says: Кажется, за нами кто-то идёт...
+exitEnding:
+  - hide ALL:
+  - narrator says: "Людмила Григорьевна оделась и ушла."
   - scene: endGame
 
 endGame:
@@ -61,5 +191,5 @@ endGame:
   - effect ROLLINGCREDITS:
     endGame: true
     text:
-      - Демо игры от команды
-      - Сибирские Сумерки
+      - Визуальная новелла "Ванечка"
+      - От команды "Сибирские сумерки"
