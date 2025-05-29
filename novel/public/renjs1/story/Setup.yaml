@@ -1,0 +1,29 @@
+# setup.yaml
+backgrounds:
+  museum_hall: assets/bgs_resized/museum_hall.png
+  mirror_room: assets/bgs_resized/mirror_room.png
+  ball_room: assets/bgs_resized/ball_room.png
+  ladies_room: assets/bgs_resized/ladies_room.png
+  astashev_office: assets/bgs_resized/asto_office.png
+
+characters:
+  Alexandra:
+    displayName: "Александра Павловна"
+    speechColour: "#FF69B4"
+    looks:
+      normal: assets/alexandra/normal.png
+      embroider: assets/alexandra/normal.png
+      dance: assets/alexandra/normal.png
+      serious: assets/alexandra/normal.png
+
+  Katya:
+    displayName: "Катя"
+    speechColour: "#87CEEB"
+    looks:
+      normal: assets/new_katya/normal.png
+      scared: assets/new_katya/scared.png
+      curious: assets/new_katya/curious.png
+      laughing: assets/new_katya/laughing.png
+
+  narrator:
+    speechColour: "#FFFFFF"

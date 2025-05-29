@@ -4,23 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Game() {
     const [selectedChapter, setSelectedChapter] = useState("renjs");
-    const [comingSoon, setComingSoon] = useState(false);
 
     const chapters = [
         { id: "renjs", title: "Глава 1", articleLink: "/articles/story1/art1" },
         { id: "renjs1", title: "Глава 2", articleLink: "/articles/story2/art1" },
         { id: "renjs2", title: "Глава 3", articleLink: "/articles/story3/art1" }
     ];
-
-    const handleSelectChapter = (chapterId) => {
-        if (chapterId === "renjs") {
-            setSelectedChapter(chapterId);
-            setComingSoon(false);
-        } else {
-            setComingSoon(true);
-            setSelectedChapter(chapterId); // чтобы подсвечивать выбранную кнопку
-        }
-    };
 
     return (
         <div style={styles.container}>
@@ -30,7 +19,7 @@ export default function Game() {
                 {chapters.map((chapter) => (
                     <div key={chapter.id} style={styles.chapterItem}>
                         <button
-                            onClick={() => handleSelectChapter(chapter.id)}
+                            onClick={() => setSelectedChapter(chapter.id)}
                             style={{
                                 ...styles.button,
                                 ...(selectedChapter === chapter.id ? styles.activeButton : {})
@@ -45,36 +34,23 @@ export default function Game() {
                 ))}
             </div>
 
-            <AnimatePresence>
-                {comingSoon ? (
-                    <motion.div
-                        key="coming-soon"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.5 }}
-                        style={styles.comingSoonBox}
-                    >
-                        Coming soon...
-                    </motion.div>
-                ) : (
-                    <motion.div
-                        key="iframe"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        style={{ width: "100%" }}
-                    >
-                        <iframe
-                            src={`/${selectedChapter}/index.html`}
-                            title="RenJS Game"
-                            width="100%"
-                            height="600px"
-                            style={styles.iframe}
-                        />
-                    </motion.div>
-                )}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={selectedChapter}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    style={{ width: "100%" }}
+                >
+                    <iframe
+                        src={`/${selectedChapter}/index.html`}
+                        title="RenJS Game"
+                        width="100%"
+                        height="600px"
+                        style={styles.iframe}
+                    />
+                </motion.div>
             </AnimatePresence>
 
             <div style={{ marginTop: "30px", textAlign: "center" }}>
@@ -127,24 +103,11 @@ const styles = {
         color: "#fff",
         transform: "scale(1.05)"
     },
-    disabledButton: {
-        opacity: 0.5,
-        cursor: "not-allowed"
-    },
     articleLink: {
         marginTop: "8px",
         fontSize: "14px",
         color: "#d8c1f4",
         textDecoration: "underline"
-    },
-    comingSoonBox: {
-        marginTop: "40px",
-        padding: "50px",
-        border: "2px dashed #cbaef4",
-        borderRadius: "12px",
-        backgroundColor: "#5a3b7d22",
-        color: "#f0e6ff",
-        fontSize: "24px"
     },
     iframe: {
         border: "1px solid #ccc",

@@ -1,0 +1,7 @@
+# setup.yaml
+backgrounds:
+  city_street: /assets/bgs_resized/city_street.png
+
+characters:
+  narrator:
+    speechColour: "#FFFFFF"

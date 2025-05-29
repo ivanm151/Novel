@@ -1,0 +1,5 @@
+# story.yaml
+start:
+  - show city_street: WITH FADE CONTINUE
+  - choice:
+      - "Вернуться домой":
